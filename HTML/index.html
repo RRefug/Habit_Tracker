@@ -4,15 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> WELCOME TO MY TRACKER APP </title>
+    <link rel ="stylesheet" href = "../CSS/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <div class = ''> 
-        <p> This contains the sign up and dashboard stuff </p>
-        <a href="signup.html"> Sign Up </a>
-        <a href="dashboard.html"> Dashboard </a>
-    </div>
+    <body>
+    <div class ='container3'>
+        <div class='container1'>
+                <div class='website_Name'>
+                    § Me n My Habits
+                </div>
 
-    <h1> Habit Tracker </h1>
-    
+                <div class='options_Container'>
+                    <a class='option_box' href="dashboard.html"> Friends </a>
+                    <a class='option_box' href="signup.html"> Streaks </a> 
+                    <a class='option_box' href="dashboard.html"> Badges </a>
+                </div>
+
+                <div class='profile_image'>
+                    ICON
+                </div>
+        </div>
+        <div class="container2">
+            <div class = 'welcome_Screen'> 
+                <!-- Have a character limit for username! 12 max-->
+                <h1>
+                    Hi Rafael🖐️
+                </h1>
+                <h2> 
+                    Ready to track today's habits?
+                </h2>
+            </div>
+
+            <div class='habits_Container'> 
+                <!-- Have a character limit for each box. 22 max -->
+                <!-- habit_Name will be ids since placement is important. -->
+                <ul class='habits_List'> 
+                    <div class="habit_Box1"> 
+                        <li class="habit_Name"> Drink Water</li>
+                    </div>
+                    <div class="habit_Box2">
+                        <li class="habit_Name"> Practice Spanish</li>
+                    </div>
+                    <div class="habit_Box3"> 
+                        <li class="habit_Name"> Stretch for 10 minutes</li>
+                    </div>
+                </ul>
+            </div>
+
+            <div class = 'summary_Container'>
+                <div class="trophy_Image">
+                    🏆
+                </div>
+                <div class = "encouragement"> 
+                    You've kept up 3 habits for 5 days straight. Keep it going!
+                </div>
+            </div>
+
+            <div class='final_Message'> No Pressure. Just Progress </div>
+        </div>
+    </div>
 </body>
 </html>

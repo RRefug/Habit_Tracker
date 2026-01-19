@@ -8,6 +8,11 @@ function showGreeting(){
 }
 
 
+// TODO: Daily button will update user day streak counter. 
+
+
+
+
 // Optional: Step 1 of running functions in your terminal. If you want to be extra ;}
 // Rest of info is in runGreeting.js file. Also, don't forget to cd into JavaScript folder before doing this :)
 module.exports = { showGreeting }

@@ -14,7 +14,7 @@ const user = new User()
 // Check user details. 
 console.log(user.get_username())
 console.log(user.get_day_counter())
-console.log(user.get_badge_collection())
+console.log('Badge collection: ', user.get_badge_collection())
 
 
 // Grab DOM elements (ids) from index.html
@@ -26,3 +26,7 @@ welcome_username.textContent = user.get_username()
 welcome_day_streaks.textContent = user.get_day_counter()
 
 /* Apparently, there is a chance that your js file runes before the dom exists. So be careful.*/
+
+
+// check that the list is added
+console.log(user.habits.view_habits())

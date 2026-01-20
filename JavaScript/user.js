@@ -1,3 +1,4 @@
+import { Habits } from "./habits.js"
 
 export class User {
 
@@ -7,8 +8,8 @@ export class User {
         this.day_counter = days
         this.badge_collection = badges
         
-        // this.create_habits()
-        // view_habits()
+        this.habits = new Habits()
+        console.log('Made new habits')
     }
 
     // public functions
@@ -23,5 +24,4 @@ export class User {
     get_badge_collection(){
         return this.badge_collection
     }
-
 }

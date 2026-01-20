@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Habit Viewer </title>
     <!-- need type = 'module' to ensure js functions connect to html pages. -->
+     <!-- doing this also causes functions to not be automatically global. So use event listeners instead. -->
     <script type = 'module' src = '/JavaScript/habits.js'></script>
 </head>
 
@@ -15,7 +16,7 @@
     </div>
 
     <div class = 'add_habits_button'>
-        <button type = 'button' onclick = 'add_habit()'> Add Habit </button>
+        <button id = "addHabitBtn"> Add Habit </button>
     </div>
 
     <a href = '../index.html'> Back to Progress Viewer </a>

@@ -7,34 +7,28 @@ export class Habits {
         this.habits_list = [];
     }
 
-    add_habit(){
-        console.log('Clicked Submit Habit...')
-        // ask for user input
-        const input = document.getElementById("habitInput");
-        const habit = input.value.trim();
-
-        // if an empty habit is submitted
-        if (habit === '') {
-            console.log("Empty habit submitted")
-            return;
-        }
-        console.log("Continuing...")
-        // push user input into habits array
-        this.habits_list.push(habit);
-
-        // Render the new habits pushed onto the list. 
-        this.renderHabits();
-
-        // clearing input after submission
-        input.value = "";
-        console.log('End of the add_habit function')
+    get_habits(){
+        return this.habits_list;
     }
 
-    renderHabits(){
-        console.log("renderHabits called...")
+    add_habit(){
 
-        // clear old list
-        habits_list.innerHTML = "";   // 
+        const user_input = document.getElementById("habitInput");
+        const habit = user_input.value.trim();
+
+        if (habit === '') {
+            console.log("Empty habit submitted, will not add to array")
+            return;
+        }
+
+        this.habits_list.push(habit);
+        this.render_new_habits(); 
+        user_input.value = ""; 
+    }
+
+    render_new_habits(){
+
+        habits_list.innerHTML = "";  
 
         // rebuild list from array
         this.habits_list.forEach((habit) => {
@@ -53,46 +47,8 @@ export class Habits {
             console.log(this.habits_list[i])
         }
     }
-
-    // public functions
-    get_habits(){
-        return this.habits_list;
-    }
 }
 
-
-// Behavior on the habits html page
-
-
-// If asked:
-
-// “Why can’t you reuse the same object across pages?”
-
-// Strong answer:
-
-// “Each page load creates a new JavaScript runtime. To persist state, you need STORAGE or a backend.”
-
-// That’s 💯.
-
-//TODO: Will make this happen next: Real apps do this.
-// User created
-// → Habits loads from localStorage
-// → User navigates to habits.html
-// → Habits reloads from localStorage
-// → Same data, new instance
-
-// Save habits (when modified)
-// localStorage.setItem("habits", JSON.stringify(this.habits_list));
-
-// Load habits (in constructor)
-// constructor() {
-//     const saved = localStorage.getItem("habits");
-//     this.habits_list = saved ? JSON.parse(saved) : [];
-// }
-
-
-
-// LOOK AT THIS DOCUMENTATION FOR LOCAL STORAGE DOcumentation: https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API
 
 const habits_obj = new Habits();
 
@@ -108,15 +64,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // stop 'form', DOM from habits.html, submission from reloading page after every button push event.
     btn.addEventListener("click", (event) => {
         event.preventDefault();  
-
         habits_obj.add_habit(); 
     });
 });
 
-// Only run code if we're on the page that has this element. 
+// Only runs code if we're on habits.html
 if (habits_list) {  
-
-    // push data from index.js into habits.html
+    // push data from habits.js into habits.html
     habits_list.textContent = habits_obj.get_habits();
 }
 

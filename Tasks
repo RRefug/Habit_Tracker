@@ -1,8 +1,9 @@
 
 Other tasks weren't so tough, review git history. 
 
-
+------------
 2/1/2026
+------------
 
 Task: Finish adding habits to habits.html page.
 Task: Be able to view newly added habits on habits.html page.
@@ -11,4 +12,39 @@ New Tasks
 Figure out how to use "local storage" (link can be found on habits.js) 
 to save newly added habits, created on habits.html, and bring to index.html. 
 
-Then, implement that functionality so that newly added habits appear on both
+Then, implement that functionality so that newly added habits appear on both html pages.
+
+--------
+Idea below:
+--------
+// Behavior on the habits html page
+
+
+// If asked:
+
+// “Why can’t you reuse the same object across pages?”
+
+// Strong answer:
+
+// “Each page load creates a new JavaScript runtime. To persist state, you need STORAGE or a backend.”
+
+
+Real apps do this.
+// User created
+// → Habits loads from localStorage
+// → User navigates to habits.html
+// → Habits reloads from localStorage
+// → Same data, new instance
+
+// Save habits (when modified)
+// localStorage.setItem("habits", JSON.stringify(this.habits_list));
+
+// Load habits (in constructor)
+// constructor() {
+//     const saved = localStorage.getItem("habits");
+//     this.habits_list = saved ? JSON.parse(saved) : [];
+// }
+
+
+
+// LOOK AT THIS DOCUMENTATION FOR LOCAL STORAGE DOcumentation: https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API

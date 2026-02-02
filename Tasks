@@ -1,0 +1,14 @@
+
+Other tasks weren't so tough, review git history. 
+
+
+2/1/2026
+
+Task: Finish adding habits to habits.html page.
+Task: Be able to view newly added habits on habits.html page.
+
+New Tasks
+Figure out how to use "local storage" (link can be found on habits.js) 
+to save newly added habits, created on habits.html, and bring to index.html. 
+
+Then, implement that functionality so that newly added habits appear on both

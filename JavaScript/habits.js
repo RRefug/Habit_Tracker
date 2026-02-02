@@ -2,8 +2,9 @@ console.log('habits.js loaded! All JS files load at the same time :D FYI')
 
 
 export class Habits {
+    
     constructor(){
-        this.habits_list = []; //Little hard code test: ['No Habits', 'cooking'];
+        this.habits_list = [];
     }
 
     add_habit(){
@@ -21,12 +22,8 @@ export class Habits {
         // push user input into habits array
         this.habits_list.push(habit);
 
-        // Render the new habits pushed onto the list.
+        // Render the new habits pushed onto the list. 
         this.renderHabits();
-
-
-        // old code before learning about local storage, will delete once we get an idea how.
-        //this.habits_list.push(user_habit)
 
         // clearing input after submission
         input.value = "";
@@ -47,6 +44,7 @@ export class Habits {
         });
     }
 
+    // not being used, maybe delete. 
     view_habits(){
         let size = this.habits_list.length;
 
@@ -95,19 +93,11 @@ export class Habits {
 
 
 // LOOK AT THIS DOCUMENTATION FOR LOCAL STORAGE DOcumentation: https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API
-// We kno how it works, we just need to make sure we can add habits first.
 
-const habits = new Habits();
+const habits_obj = new Habits();
 
-// document.addEventListener("DOMContentLoaded", () => {
-//     const btn = document.getElementById("submitHabitBtn")
-//     console.log("Button: ", btn)
-
-//     if (!btn) return;
-
-//     // add_habit means heres the function.
-//     btn.addEventListener("click", habits.add_habit) // habits.add_habit() means run the function RIGHT NOW!
-// })
+// Grab DOM elements (ids) from habits.html. 
+const habits_list = document.getElementById("habits_html_list");
 
 document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("submitHabitBtn");
@@ -115,21 +105,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!btn) return;
 
+    // stop 'form', DOM from habits.html, submission from reloading page after every button push event.
     btn.addEventListener("click", (event) => {
-        event.preventDefault();   // stop form submission
-        habits.add_habit();
+        event.preventDefault();  
+
+        habits_obj.add_habit(); 
     });
 });
 
-
-// Grab DOM elements (ids) from habits.html. This variable is also used in renderHabits()
-const habits_list = document.getElementById("habits_list");
-
-
 // Only run code if we're on the page that has this element. 
 if (habits_list) {  
+
     // push data from index.js into habits.html
-    habits_list.textContent = habits.get_habits();
+    habits_list.textContent = habits_obj.get_habits();
 }
 
 

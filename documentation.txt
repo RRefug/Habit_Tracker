@@ -1,0 +1,169 @@
+-------------------------------------------------------------
+
+Habits App – Debugging & Fixes Cheat Sheet
+
+This file documents the major issues encountered while building the Habits app, 
+explaining why they happened and how they were fixed. It serves as a reference for future projects.
+
+-------------------------------------------------------------
+
+
+
+-----------------
+2/1/2026 
+        This is the day I was adding habits to my array in the Habits class on the habits.js module.
+        Trying and was able to get habits to be loaded from user input to displaying on the same html page.
+        While testing it with hardcoded data in the beginning. It's going to get trickier from here on out since project is getting bigger.
+        Small summary at the end. 
+---------------------
+
+1. DOM Element Is `null`
+
+Error:
+Uncaught TypeError: Cannot set properties of null (setting 'textContent')
+
+Cause:
+JS was trying to access an element that doesn’t exist on the current page.
+
+Fix:
+const habitsList = document.getElementById("habits_list");
+if (habitsList) {
+habitsList.textContent = habits.get_habits();
+}
+
+Takeaway: Always check if the element exists before using it.
+
+---
+
+2. Function Running on Page Load Instead of Button Click
+
+Symptom:
+add_habit() ran immediately when the page loaded.
+
+Cause:
+The function was called instead of passed as a callback.
+
+Fix:
+btn.addEventListener("click", add_habit); // ✅
+
+Takeaway: Use the function reference, not the invocation.
+
+---
+
+3. Page Refreshing on Button Click
+
+Symptom:
+Page refreshed immediately; new habits disappeared.
+
+Cause:
+Button was inside a form; submit buttons refresh by default.
+
+Fix:
+btn.addEventListener("click", (event) => {
+event.preventDefault();
+habits.add_habit();
+});
+
+Alternative Fix: <button type="button">Submit Habit</button>
+
+Takeaway: Forms submit unless prevented.
+
+---
+
+4. `this` Not Referring to Class Instance
+
+Symptom:
+Class methods failed or behaved incorrectly.
+
+Cause:
+Passing a method directly loses `this` context.
+
+Fix:
+btn.addEventListener("click", (event) => {
+event.preventDefault();
+habits.add_habit();
+});
+
+Takeaway: Arrow functions preserve context.
+
+---
+
+5. Calling Class Method Like a Global Function
+
+Error:
+renderHabits is not defined
+
+Cause:
+Calling a class method without `this`.
+
+Fix:
+this.renderHabits();
+
+Takeaway: Methods belong to objects, not the global scope.
+
+---
+
+6. Variable Name Mismatch
+
+Symptom:
+Rendering failed or crashed.
+
+Cause:
+Using different variable names for the same element.
+
+Fix:
+const habitList = document.getElementById("habitList");
+habitList.innerHTML = "";
+habitList.appendChild(li);
+
+Takeaway: Be consistent with naming.
+
+---
+
+7. DOM Access Before Page Load
+
+Cause:
+Accessing DOM elements before they exist.
+
+Fix:
+document.addEventListener("DOMContentLoaded", () => {
+const btn = document.getElementById("submitHabitBtn");
+if (!btn) return;
+btn.addEventListener("click", (event) => {
+event.preventDefault();
+habits.add_habit();
+});
+});
+
+Takeaway: Wait for DOM before touching elements.
+
+---
+
+8. Data Not Persisting Between Pages (Expected)
+
+Observation:
+Habits do not persist across refreshes or navigation.
+
+Explanation:
+Each page load creates a new JS runtime. Objects are not shared across pages.
+
+Planned Fix:
+Use localStorage to save and load habits.
+
+Takeaway: Persistence requires storage or a backend.
+
+---
+
+Final Mental Model:
+
+* Array / Class = Source of Truth
+* DOM = Display only
+* Every state change → re-render
+* Forms refresh unless prevented
+* Functions don’t run unless called
+* Pages don’t share memory
+
+---
+
+Why This Matters:
+These bugs reflect real-world frontend challenges. Solving them builds understanding of event-driven programming, browser defaults, DOM lifecycle, state vs UI, and object-oriented JS. Revisit this document as the project grows.

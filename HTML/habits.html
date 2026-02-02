@@ -9,16 +9,34 @@
     <script type = 'module' src = '/JavaScript/habits.js'></script>
 </head>
 
-<body>    
-    <div class = 'viewing_habits_container'>
-        All habits listed below:
-
-    </div>
-
-    <div class = 'add_habits_button'>
-        <button id = "addHabitBtn"> Add Habit </button>
-    </div>
-
+<body>
+    
     <a href = '../index.html'> Back to Progress Viewer </a>
-</body>
+
+    <br><br>
+
+    <div id = 'habit_form'>
+        <form>
+            <label for="habitName"> Habit Name: </label>
+
+            <input type="text" id="habitInput" name="habitName" required>
+
+            <br>
+
+            <button type="submit" id = "submitHabitBtn"> Submit Habit </button>
+        </form>
+    </div>
+
+    <br>
+
+    <div id = 'viewing_habits_container'>
+        All habits listed below:
+        <ul id = 'habits_list'> </ul>
+    </div>
+
+    <!-- <div class = 'add_habits_button'>
+        <button id = "addHabitBtn"> Add Habit </button>
+    </div> -->
+
+ </body>
 </html>

@@ -25,7 +25,7 @@ const welcome_day_streaks = document.querySelector(".encouragement")
 welcome_username.textContent = user.get_username()
 welcome_day_streaks.textContent = user.get_day_counter()
 
-/* Apparently, there is a chance that your js file runes before the dom exists. So be careful.*/
+/* Apparently, there is a chance that your js file runs before the dom exists. So be careful.*/
 
 
 // check that the list is added

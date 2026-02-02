@@ -9,7 +9,7 @@ export class User {
         this.badge_collection = badges
         
         this.habits = new Habits()
-        console.log('Made new habits')
+        console.log('Made new habits');
     }
 
     // public functions

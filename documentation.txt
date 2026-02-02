@@ -128,7 +128,10 @@ Accessing DOM elements before they exist.
 Fix:
 document.addEventListener("DOMContentLoaded", () => {
 const btn = document.getElementById("submitHabitBtn");
+
 if (!btn) return;
+
+// added this section within the DOMContentLoaded
 btn.addEventListener("click", (event) => {
 event.preventDefault();
 habits.add_habit();

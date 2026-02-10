@@ -5,8 +5,8 @@ Other tasks weren't so tough, review git history.
 2/1/2026
 ------------
 
-Task: Finish adding habits to habits.html page.
-Task: Be able to view newly added habits on habits.html page.
+Task: Finish adding habits to habits.html page. Done!
+Task: Be able to view newly added habits on habits.html page. Done!
 
 New Tasks!!!!
 1. Figure out how to use "local storage" (link can be found on habits.js) 
@@ -16,7 +16,7 @@ to save newly added habits, created on habits.html, and bring to index.html.
 2. Then, implement that functionality so that newly added habits appear on both html pages.
 
 3. Try to see why your deplyment is doing this error:
-GET https://rrefug.github.io/JavaScript/habits.js net::ERR_ABORTED 404 (Not Found)
+GET https://rrefug.github.io/JavaScript/habits.js net::ERR_ABORTED 404 (Not Found) (probably just the structure in habits.html where we have the redirect back to landing page.)
 
 
 
@@ -54,3 +54,19 @@ Real apps do this.
 
 
 // LOOK AT THIS DOCUMENTATION FOR LOCAL STORAGE DOcumentation: https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API
+
+
+
+
+------------
+2/10/2026
+------------
+
+1. Figure out how to use "local storage" (link can be found on habits.js) 
+to save newly added habits, created on habits.html, and bring to index.html. 
+
+
+2. Then, implement that functionality so that newly added habits appear on both html pages.
+
+3. Try to see why your deplyment is doing this error:
+GET https://rrefug.github.io/JavaScript/habits.js net::ERR_ABORTED 404 (Not Found) (probably just the structure in habits.html where we have the redirect back to landing page.)

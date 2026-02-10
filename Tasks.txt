@@ -62,11 +62,15 @@ Real apps do this.
 2/10/2026
 ------------
 
+
+TODO TASKS:
+
 1. Figure out how to use "local storage" (link can be found on habits.js) 
-to save newly added habits, created on habits.html, and bring to index.html. 
+to save newly added habits, created on habits.html, and bring to index.html.  (make a new branch.)
 
 
 2. Then, implement that functionality so that newly added habits appear on both html pages.
 
 3. Try to see why your deplyment is doing this error:
-GET https://rrefug.github.io/JavaScript/habits.js net::ERR_ABORTED 404 (Not Found) (probably just the structure in habits.html where we have the redirect back to landing page.)
+GET https://rrefug.github.io/JavaScript/habits.js net::ERR_ABORTED 404 (Not Found) (probably just the structure in habits.html where we have the redirect back to landing page.) 
+[Done, HTML file <script> tag had a path issue ..//JavaScript was better than //Javascript]

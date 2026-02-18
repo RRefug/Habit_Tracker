@@ -74,3 +74,50 @@ to save newly added habits, created on habits.html, and bring to index.html.  (m
 3. Try to see why your deplyment is doing this error:
 GET https://rrefug.github.io/JavaScript/habits.js net::ERR_ABORTED 404 (Not Found) (probably just the structure in habits.html where we have the redirect back to landing page.) 
 [Done, HTML file <script> tag had a path issue ..//JavaScript was better than //Javascript]
+
+
+No Errors just new logic we need to figure out.
+Right now, our app is able to add habits and save the data we have pushed to localstorage. I am trying to see what is a good way to do this. Might have to roll back one.
+Updating the localStorage data every single time we added a habit was good. However, it caused an issue of displaying to the page once we got more than one habit submitted.
+Maybe refactor and make a new function to ensure render_habits() 's displaying functionality doesn't merge with the localstorage's existence behaviors.
+Or.
+Just roll back and make sure the habits_obj is pushed once everything in the array is added and the user pushes the update button. (better option)
+
+New task:
+- Figure out first time and current user behavior when launching the page.
+
+Current tasks:
+
+- Figure out how to use "local storage" (youtube tutorial was very helpful) to save newly added habits, created on habits.html. (make a new branch.)
+- Then, bring habits_obj to index.html when done on the branch. Implement that functionality so that newly added habits appear on both html pages.
+- Figure out first time and current user behavior when launching the habits.html page.
+
+
+
+------------
+2/17/2026
+------------
+
+TODO TASKS:
+
+- Figure out how to use "local storage" (youtube tutorial was very helpful) to save newly added habits, created on habits.html. (make a new branch.) (DONE :D)
+- Then, bring habits_obj to index.html when done on the branch. Implement that functionality so that newly added habits appear on both html pages.
+- Figure out first time and current user behavior when launching the habits.html page. (DONE :D)
+
+PLAN:
+Also, duuude I feel improvement. Try to use this line :
+        * Don't touch below this line yet ** 
+a lot more.it's very helpful!!
+
+- Decided to go with the send all habits at once button after adding each one to their list. 
+- That is 2 different functionalities. Make sure they do not interwine. 
+
+NEW TASKS:
+- Implement Delete and maybe Edit. Edit might come later, but delete for sure since testing.
+- Find out a way to safely initialize habits.js in main(bottom of habits.js) because right now, index.html tries to call functions of Habits class with a null object from habits.js module.
+
+
+Current Tasks:
+- Find out a way to safely initialize habits.js in main(bottom of habits.js) because right now, index.html tries to call functions of Habits class with a null object from habits.js module.
+- Implement Delete and maybe Edit. Edit might come later, but delete for sure since testing.
+- Then, bring habits_obj to index.html when done on the branch. Implement that functionality so that newly added habits appear on both html pages.

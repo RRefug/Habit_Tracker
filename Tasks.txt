@@ -100,16 +100,24 @@ Current tasks:
 
 TODO TASKS:
 
-- Figure out how to use "local storage" (youtube tutorial was very helpful) to save newly added habits, created on habits.html. (make a new branch.)
+- Figure out how to use "local storage" (youtube tutorial was very helpful) to save newly added habits, created on habits.html. (make a new branch.) (DONE :D)
 - Then, bring habits_obj to index.html when done on the branch. Implement that functionality so that newly added habits appear on both html pages.
-- Figure out first time and current user behavior when launching the habits.html page.
+- Figure out first time and current user behavior when launching the habits.html page. (DONE :D)
 
-Plan:
-
+PLAN:
 Also, duuude I feel improvement. Try to use this line :
-* Don't touch below this line yet ** 
-
+        * Don't touch below this line yet ** 
 a lot more.it's very helpful!!
 
 - Decided to go with the send all habits at once button after adding each one to their list. 
 - That is 2 different functionalities. Make sure they do not interwine. 
+
+NEW TASKS:
+- Implement Delete and maybe Edit. Edit might come later, but delete for sure since testing.
+- Find out a way to safely initialize habits.js in main(bottom of habits.js) because right now, index.html tries to call functions of Habits class with a null object from habits.js module.
+
+
+Current Tasks:
+- Find out a way to safely initialize habits.js in main(bottom of habits.js) because right now, index.html tries to call functions of Habits class with a null object from habits.js module.
+- Implement Delete and maybe Edit. Edit might come later, but delete for sure since testing.
+- Then, bring habits_obj to index.html when done on the branch. Implement that functionality so that newly added habits appear on both html pages.

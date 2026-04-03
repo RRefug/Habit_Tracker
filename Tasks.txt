@@ -109,7 +109,7 @@ Also, duuude I feel improvement. Try to use this line :
         * Don't touch below this line yet ** 
 a lot more.it's very helpful!!
 
-- Decided to go with the send all habits at once button after adding each one to their list. 
+- Decided to go with the send all habits at once button after adding each one to their list. (implemented!)
 - That is 2 different functionalities. Make sure they do not interwine. 
 
 NEW TASKS:

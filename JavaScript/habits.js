@@ -3,8 +3,11 @@ console.log('habits.js loaded! All JS files load at the same time :D FYI')
 
 export class Habits {
     
-    constructor(){
+    constructor(habits_list_element){
         this.habits_list = [];
+
+        // must add since habits_list is no longer a global variable.
+        this.habits_list_element = habits_list_element;
     }
 
     get_habits(){
@@ -36,7 +39,7 @@ export class Habits {
 
         //* 1. Push habits object to local storage after a subit all habits button is pushed
         // The array should be using data already found in local storage.
-        let my_habits_serialized = JSON.stringify(habits_obj);
+        let my_habits_serialized = JSON.stringify(this);
         localStorage.setItem('string_habits_object', my_habits_serialized);
 
         console.log('Added ALL habits to local storage...')
@@ -47,13 +50,13 @@ export class Habits {
      */
     render_new_habits(){
 
-        habits_list.innerHTML = "";  
+        this.habits_list_element.innerHTML = "";  
 
         // rebuild list from array
         this.habits_list.forEach((habit) => {
             const li = document.createElement("li");
             li.textContent = habit;
-            habits_list.appendChild(li);
+            habits_list_element.appendChild(li);
         });
     }
 
@@ -93,13 +96,13 @@ export class Habits {
      */
     render_local_storage_habits(JSON_obj){
 
-        habits_list.innerHTML = "";  
+        this.habits_list_element.innerHTML = "";  
 
         // rebuild list from JSON_obj array
         JSON_obj.habits_list.forEach((habit) => {
             const li = document.createElement("li");
             li.textContent = habit;
-            habits_list.appendChild(li);
+            this.habits_list_element.appendChild(li);
         });
     }
 
@@ -140,50 +143,59 @@ export class Habits {
 
 
 
+// NEW: Wrapping initialization function. So this main does not run automatically when the web app opens index.html.
+
+export function initHabitsPage() {
+
+    console.log('WE ARE RUNNING initHabitsPage()...\n If you are on index.html, you should not be seeing this message.');
 
 
-// Create new Habits Object
-let habits_obj = new Habits();
 
-// Grab DOM elements (ids) from habits.html. 
-const habits_list = document.getElementById("habits_html_list");
+    // Grab DOM elements (ids) from habits.html. 
+    const habits_list = document.getElementById("habits_html_list");
+
+    // If we are not in habits.html, don't run bottom code since habits_list is created from the <ul> from habits.html
+    if (!habits_list) return; 
+
+    // Create new Habits Object
+    let habits_obj = new Habits(habits_list);
+
+    // When HTML page loads...
+    document.addEventListener("DOMContentLoaded", () => {
+
+        // Check if our local storage object exists
+        habits_obj.check_local_storage_habits();
 
 
-// When HTML page loads...
-document.addEventListener("DOMContentLoaded", () => {
+        // Submit all habits button logic
+        const submit_all_btn = document.getElementById("submit_all_habits_btn");
+        console.log("Submit All Habits Btn ID grabbed", submit_all_btn);
 
-    // Check if our local storage object exists
-    habits_obj.check_local_storage_habits();
+        if (!submit_all_btn) return;
+        submit_all_btn.addEventListener("click", (event) => {
+            event.preventDefault(); 
+            habits_obj.add_all_habits_to_localStorage(); 
+        });
 
+        // Submit Habit Button Logic
+        const btn = document.getElementById("submitHabitBtn");
+        console.log("Submit Habit Button ID grabbed", btn);
 
-    // Submit all habits button logic
-    const submit_all_btn = document.getElementById("submit_all_habits_btn");
-    console.log("Submit All Habits Btn ID grabbed", submit_all_btn);
-
-    if (!submit_all_btn) return;
-    submit_all_btn.addEventListener("click", (event) => {
-        event.preventDefault(); 
-        habits_obj.add_all_habits_to_localStorage(); 
+        if (!btn) return;
+        // stop 'form', DOM element from habits.html, submission from reloading page after every button push event.
+        btn.addEventListener("click", (event) => {
+            event.preventDefault();  
+            habits_obj.add_habit(); 
+        });
     });
 
-    // Submit Habit Button Logic
-    const btn = document.getElementById("submitHabitBtn");
-    console.log("Submit Habit Button ID grabbed", btn);
 
-    if (!btn) return;
-    // stop 'form', DOM element from habits.html, submission from reloading page after every button push event.
-    btn.addEventListener("click", (event) => {
-        event.preventDefault();  
-        habits_obj.add_habit(); 
-    });
-});
-
-
-// Only runs code if we're on habits.html
-if (habits_list) {  
-    // push data from habits.js into habits.html
-    habits_list.textContent = habits_obj.get_habits();
+    // Only runs code if we're on habits.html
+    if (habits_list) {  
+        // push data from habits.js into habits.html
+        habits_list.textContent = habits_obj.get_habits();
+    }
+    console.log('Function call ended.');
 }
-
 
 

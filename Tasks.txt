@@ -118,6 +118,8 @@ NEW TASKS:
 
 
 Current Tasks:
-- Find out a way to safely initialize habits.js in main(bottom of habits.js) because right now, index.html tries to call functions of Habits class with a null object from habits.js module.
+- Find out a way to safely initialize habits.js in main(bottom of habits.js) because right now, index.html tries to call functions of Habits class with a null object from habits.js module. (FIXED, apparently modern apps do the fix i just did all the time.)
 - Implement Delete and maybe Edit. Edit might come later, but delete for sure since testing.
 - Then, bring habits_obj to index.html when done on the branch. Implement that functionality so that newly added habits appear on both html pages.
+
+

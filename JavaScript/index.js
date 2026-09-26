@@ -1,4 +1,5 @@
 import { User } from "./user.js";
+import { initHabitsPage } from "./habits.js";
 
 
 `
@@ -9,7 +10,6 @@ A user is created when visiting the website.
 
 // If not, create default user
 const user = new User()
-
 
 // Check user details. 
 console.log(user.get_username())
@@ -30,3 +30,14 @@ welcome_day_streaks.textContent = user.get_day_counter()
 
 // check that the list is added
 console.log(user.habits.view_habits())
+
+
+
+
+// Section to handle opening up and running habits.js module
+
+// When HTML page loads...
+document.addEventListener("DOMContentLoaded", () => {
+    console.log('Awaiting someone to push habits... (message from index.js)')
+    initHabitsPage();
+});

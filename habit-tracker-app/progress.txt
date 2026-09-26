@@ -1,0 +1,66 @@
+This is the start of the new modern application I will design for habit tracker, I guess I will delete the other stuff. I don't really know yet.
+
+#################
+NEW PLAN:
+#################
+
+- Using Next.js instead of React because it provides a strong foundation in:
+    - Dynamic social sharing (OG tags)
+    - Built in API routes: (a reward system requires a backend to securely track consecutive login streaks, handle user authentication, and manage point balances.) • Next.js lets you write your frontend code and backend endpoints (/api/streak, /api/rewards) in the same repository. You don't have to spin up and manage a completely separate server project.
+    - Better User Retention & SEO: Next.js pre-renders your pages on the server, resulting in faster initial page loads. A snappy landing page and a lightning-fast dashboard keep users from bouncing before they even log in.
+
+
+Architecture I will use:
+[ User Browser ] <---> [ Next.js Server (API Routes) ] <---> [ Database ]
+
+1. Authentication: You will need a way to identify users so the app knows whose to-do list and login streak to pull.
+2. Database: A centralized place to securely save tasks, point balances, and account creation dates.
+3. Server-Side Logic: You cannot trust the user's browser to calculate rewards or login streaks. A user could easily change their computer's internal clock to "trick" the browser into thinking they logged in 5 days in a row. Next.js lets you run that streak calculation safely on the server using the absolute server time.
+
+
+# Authentication - Will be using Supabase Auth because it is already built in
+ # Database - Using Supabase free tier, want ORM (Object-relational Mapping, smart engineering in today's modern tech world), basically better than SQL! which won't be so bad with sql injection and better than writing raw sql.
+
+Clerk vs. Auth.js (NextAuth)
+Since we are using Supabase, we have a third excellent option: Supabase Auth is built right into your database for free. However, if you are looking at dedicated authentication tools, here is how Clerk and Auth.js compare:
+• Clerk is a "Done-for-You" paid service (with a massive free tier up to 10,000 monthly active users). It provides pre-built, beautiful UI components for your Sign-In, Sign-Up, and User Profile pages. You just drop <SignIn /> into your Next.js code, and it handles everything—social logins (Google, Apple), email verification codes, passkeys, and session management. It saves you days of frontend work.
+• Auth.js (NextAuth) is an open-source library. It is completely free and self-hosted within your Next.js app. However, you have to build the entire UI yourself (the text boxes, the error messages, the loading states). It gives you 100% control over your data and code, but requires more setup and maintenance.
+
+## The Verdict: If you want to launch quickly without designing login pages, use Clerk. If you want total ownership of your data or plan to grow past 10,000 users without paying, use Auth.js or Supabase Auth.
+
+######################################
+TIME STAMPS:
+######################################
+
+#####################################################################
+9/25/26
+#########
+Progress of the day: 
+- We already had node.js running within this application, but now we introduced next.js by doing the command inside of the powershell terminal:
+npx create-next-app@latest habit-tracker-app
+
+How can we tell next.js is in? A new folder inside of this directory called habit-tracker-app, however, we might have to scrap the rest outside of it once this becomes better.
+
+We added Next.js because you cannot build a secure, scalable reward system using only raw React and browser storage.
+Here is exactly why we did this and what that new folder represents:
+Why did we add Next.js?
+If you stayed with just client-side React and localStorage, your application would have major limitations:
+• The "Cheating" Problem: Users could easily hack their habit streaks by changing their computer's internal clock or editing the browser data.
+• The "Data Loss" Problem: If a user cleared their browser history or logged in from their phone instead of their laptop, all their tasks and earned points would disappear.
+• The "Sharing" Problem: If a user tried to text a friend a link to show off their 10-day habit streak, the preview link would look blank and broken.
+Next.js solves all of this. It gives you a built-in server environment. Now, when a user checks off a habit, Next.js can securely talk to your Supabase database to save their progress forever, use absolute server time to calculate streaks so no one can cheat, and generate beautiful preview cards when they share links with friends [http://localhost:3000].
+
+What is the purpose of the habit-tracker-app folder?
+Think of this new folder as your complete workspace box. Inside this one folder, Next.js has automatically set up a structured blueprint for your entire application:
+• src/app/: This is where you will write your pages (like your home page, dashboard, and settings).
+• package.json: This is the project's brain that lists all your tools (React, Next.js, and soon Supabase and Prisma).
+• node_modules/: The heavy machinery folder where all the background code that powers your app lives.
+Instead of you having to manually create dozens of configuration files to link React, compiler tools, and styling packages together, Next.js packaged it all perfectly inside this single folder so you can start writing your features immediately.
+
+
+Steps to get a next.js app server going inside of vs code
+Step 1: Make sure to enter the directory cd habit-tracker-app
+Step 2: Check out the local section and copy the localhost:3000 port! Follow the link
+Step 3: You are in checking out the front end. 
+
+####################################################################

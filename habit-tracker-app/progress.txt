@@ -28,9 +28,9 @@ Since we are using Supabase, we have a third excellent option: Supabase Auth is 
 
 ## The Verdict: If you want to launch quickly without designing login pages, use Clerk. If you want total ownership of your data or plan to grow past 10,000 users without paying, use Auth.js or Supabase Auth.
 
-######################################
+##################################################################################################################################################################################################################################################
 TIME STAMPS:
-######################################
+##############################################################################################################################################################################
 
 #####################################################################
 9/25/26
@@ -64,3 +64,27 @@ Step 2: Check out the local section and copy the localhost:3000 port! Follow the
 Step 3: You are in checking out the front end. 
 
 ####################################################################
+
+
+####################################################################
+9/28/26
+##############
+Project Progress Log: Day 1 & 2
+Project: Full-Stack Habit Tracker
+Stack: Next.js (App Router), TypeScript, Supabase (Cloud Backend)
+
+    Key Accomplishments
+• Backend Provisioning: Woke up and configured a hosted cloud database project on Supabase.
+• Frontend Initialization: Initialized a clean, scalable Next.js application using TypeScript and modern file-based routing architecture.
+• Environmental Security: Created a localized environment file (.env.local) to securely store cloud API credentials (URL & Anon Key) and verified that the .gitignore system effectively protects them from being exposed to version control.
+• Route Architecture: Successfully engineered a multi-page routing framework inside the Next.js app/ directory, cleanly isolating the index root path (/) from the secure login route (/login) to resolve overlapping build conflicts.
+• Authentication Portal: Built an interactive, client-side login/signup interface (page.tsx) utilizing modern React State for dynamic input capturing (useState) and hooked it up to trigger secure asynchronous authentication requests directly to the Supabase server.
+    Core Concepts Mastered
+• React State vs. Variables: Learned that regular JS variables only update local memory, while React State hooks data to the virtual DOM to trigger physical UI re-renders on the user's screen.
+• Asynchronous await Requests: Practiced using await to pause function execution during external cloud network calls, ensuring the application waits for a server response before updating user context.
+• Server vs. Client Components: Understood that Next.js defaults to Server Components for fast page loading, but demands the 'use client' directive whenever user interactivity (inputs, buttons, dynamic states) is required.
+• Real-World Debugging: Successfully resolved a TypeScript error by identifying a deprecated package (@supabase/auth-helpers-nextjs) and refactoring the module code to use the modern, industry-standard library (@supabase/ssr).
+
+####################################################################
+
+
